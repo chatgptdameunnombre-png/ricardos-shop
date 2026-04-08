@@ -49,7 +49,7 @@ nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 /* === HERO === */
 #hero{position:relative;height:100vh;overflow:hidden}
 .hbg{position:absolute;inset:0;overflow:hidden}
-.hbg iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:none;pointer-events:none}
+.hbg video{width:100%;height:100%;object-fit:cover}
 .hov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,5,5,.55) 0%,rgba(5,5,5,.1) 30%,rgba(5,5,5,.45) 65%,#050505 100%)}
 .hc{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem}
 .ht{font-family:var(--font-b);font-size:.72rem;font-weight:500;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
@@ -86,7 +86,7 @@ nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 
 /* === VIDEO DISPLAY === */
 .vd{width:92%;max-width:1100px;margin:2rem auto;aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;cursor:pointer;background:#000}
-.vd iframe{width:100%;height:100%;border:none}
+.vd iframe,.vd video{width:100%;height:100%;border:none;object-fit:cover}
 .vd .vdi{position:absolute;bottom:0;left:0;right:0;padding:1.8rem 2rem;background:linear-gradient(transparent,rgba(5,5,5,.92));z-index:2;pointer-events:none}
 .vd .vdi h3{font-family:var(--font-h);font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:.04em}
 .vd .vdi p{color:var(--dim);font-size:.78rem;margin-top:.2rem}
@@ -217,7 +217,9 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
 <!-- HERO -->
 <section id="hero">
   <div class="hbg">
-    <iframe src="https://www.youtube-nocookie.com/embed/2y7ecfsDDTg?autoplay=1&mute=1&loop=1&playlist=2y7ecfsDDTg&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&vq=hd1080" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.shopify.com/videos/c/vp/d7f522ee836d4fdb9c87676e33a12e7a/d7f522ee836d4fdb9c87676e33a12e7a.HD-720p-3.0Mbps-80190283.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="hov"></div>
   <div class="hc">
@@ -233,19 +235,19 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
 <section id="bikes">
   <div class="st"><h2>BICICLETAS <em>COLNAGO</em></h2><p>Selecciona una categoría</p></div>
 
-  <div class="vd" id="bv" data-vid="NaGcPjZoJ5Y" onclick="loadVid(this)">
-    <img class="vd-thumb" id="bvThumb" src="https://img.youtube.com/vi/NaGcPjZoJ5Y/maxresdefault.jpg" alt="">
-    <div class="vd-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-    <iframe id="bvf" src="" allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
-    <div class="vdi"><h3 id="bvt">Y1Rs UAE Team Build — Oficial Colnago</h3><p id="bvd">Armado oficial de la Y1Rs del equipo UAE Team Emirates</p></div>
+  <div class="vd" id="bv">
+    <video id="bvVid" autoplay muted loop playsinline>
+      <source src="https://cdn.shopify.com/videos/c/vp/d7f522ee836d4fdb9c87676e33a12e7a/d7f522ee836d4fdb9c87676e33a12e7a.HD-720p-3.0Mbps-80190283.mp4" type="video/mp4">
+    </video>
+    <div class="vdi"><h3 id="bvt">Colnago Y1Rs — La Máquina Aero</h3><p id="bvd">Video oficial de la bicicleta más aerodinámica de Colnago</p></div>
   </div>
 
   <div class="crow" id="bcards">
-    <div class="gc" data-v="AqIudUd6UB0" data-t="Road — Velocidad Pura" data-d="Las máquinas de Pogačar y Del Toro"><h3>ROAD</h3><span>6 modelos</span><small>Click para ver →</small></div>
-    <div class="gc" data-v="YSBqXB3Sybo" data-t="Gravel — Sin Límites" data-d="Aventura donde la carretera termina"><h3>GRAVEL</h3><span>2 modelos</span><small>Click para ver →</small></div>
-    <div class="gc" data-v="6-gluPGMweE" data-t="Allroad — Versatilidad" data-d="Asfalto y caminos con artesanía C68"><h3>ALLROAD</h3><span>1 modelo</span><small>Click para ver →</small></div>
-    <div class="gc" data-v="9N50LBZVgMs" data-t="Time Trial — Contra el Reloj" data-d="Aerodinámica extrema"><h3>TIME TRIAL</h3><span>1 modelo</span><small>Click para ver →</small></div>
-    <div class="gc" data-v="TsSZtGek-aQ" data-t="Acero — Arte Italiano" data-d="Master, Arabesque, Steelnovo"><h3>ACERO</h3><span>3 modelos</span><small>Click para ver →</small></div>
+    <div class="gc" data-v="https://cdn.shopify.com/videos/c/vp/d7f522ee836d4fdb9c87676e33a12e7a/d7f522ee836d4fdb9c87676e33a12e7a.HD-720p-3.0Mbps-80190283.mp4" data-t="Road — Velocidad Pura" data-d="Las máquinas de Pogačar y Del Toro"><h3>ROAD</h3><span>6 modelos</span><small>Click para ver →</small></div>
+    <div class="gc" data-v="https://a.storyblok.com/f/263970/x/fefb84d0ba/colnago-c68-510r-front-to-34.mp4" data-t="Gravel — Sin Límites" data-d="Aventura donde la carretera termina"><h3>GRAVEL</h3><span>2 modelos</span><small>Click para ver →</small></div>
+    <div class="gc" data-v="https://a.storyblok.com/f/263970/x/1a0875ad38/colnago-c68-510r-top-to-side.mp4" data-t="Allroad — Versatilidad" data-d="Asfalto y caminos con artesanía C68"><h3>ALLROAD</h3><span>1 modelo</span><small>Click para ver →</small></div>
+    <div class="gc" data-v="https://cdn.shopify.com/videos/c/vp/465f7c4fa80c4db88a59c9cd634dc8fe/465f7c4fa80c4db88a59c9cd634dc8fe.HD-720p-4.5Mbps-80190290.mp4" data-t="Time Trial — Contra el Reloj" data-d="Aerodinámica extrema"><h3>TIME TRIAL</h3><span>1 modelo</span><small>Click para ver →</small></div>
+    <div class="gc" data-v="https://cdn.shopify.com/videos/c/vp/1ee2f82270014be58c9c2dd87fa0320e/1ee2f82270014be58c9c2dd87fa0320e.HD-720p-3.0Mbps-80190249.mp4" data-t="Acero — Arte Italiano" data-d="Master, Arabesque, Steelnovo"><h3>ACERO</h3><span>3 modelos</span><small>Click para ver →</small></div>
   </div>
 
   <div id="prods">
@@ -299,23 +301,23 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
 <section id="history">
   <div class="st"><h2>HISTORIA DE <em>COLNAGO</em></h2><p>70 años forjando leyendas sobre dos ruedas</p></div>
 
-  <div class="vd" id="hv" data-vid="YSBqXB3Sybo" onclick="loadVid(this)">
-    <img class="vd-thumb" id="hvThumb" src="https://img.youtube.com/vi/YSBqXB3Sybo/maxresdefault.jpg" alt="">
-    <div class="vd-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-    <iframe id="hvf" src="" allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
-    <div class="vdi"><h3 id="hvt">Colnago C68 — Fatto a Mano in Italia</h3><p id="hvd">El arte de fabricar bicicletas a mano desde 1954</p></div>
+  <div class="vd" id="hv">
+    <video id="hvVid" autoplay muted loop playsinline>
+      <source src="https://cdn.shopify.com/videos/c/vp/1ee2f82270014be58c9c2dd87fa0320e/1ee2f82270014be58c9c2dd87fa0320e.HD-720p-3.0Mbps-80190249.mp4" type="video/mp4">
+    </video>
+    <div class="vdi"><h3 id="hvt">Colnago C68 — Fatto a Mano</h3><p id="hvd">Fabricación artesanal en Cambiago, Italia</p></div>
   </div>
 
   <div class="crow" id="hcards">
-    <div class="hcard" data-p="hColnago" data-v="YSBqXB3Sybo" data-t="Colnago — Fatto a Mano" data-d="El arte desde 1954">
+    <div class="hcard" data-p="hColnago" data-v="https://cdn.shopify.com/videos/c/vp/69a5072143454b3b8fce7044f122bbb7/69a5072143454b3b8fce7044f122bbb7.HD-720p-2.1Mbps-80034509.mp4" data-t="Colnago — Fatto a Mano" data-d="El arte desde 1954">
       <img src="https://c02.purpledshub.com/uploads/sites/39/2025/02/GettyImages-2200135105_CROP-scaled.jpg" alt="Pogacar">
       <div class="ho"><h3>COLNAGO</h3><p>La marca desde 1954</p><small>Click para ver →</small></div>
     </div>
-    <div class="hcard" data-p="hBikes" data-v="J0pYS1eeU2A" data-t="Bicicletas Legendarias" data-d="De la C40 a la Y1Rs">
+    <div class="hcard" data-p="hBikes" data-v="https://a.storyblok.com/f/263970/x/d0f081ff59/colnago-2025-v5rs-sdm5-front-to-three-quarter2.mp4" data-t="Bicicletas Legendarias" data-d="De la C40 a la Y1Rs">
       <img src="https://a.storyblok.com/f/263970/8215x5315/27d9ad71ec/y1rs-mondiale-bagliore-oro-prospettiva-anteriore.jpg" alt="Y1Rs Mundial">
       <div class="ho"><h3>BICICLETAS</h3><p>Modelos legendarios</p><small>Click para ver →</small></div>
     </div>
-    <div class="hcard" data-p="hAtletas" data-v="EQMdFVbH8Jg" data-t="Isaac del Toro — Victoria Histórica" data-d="Primer mexicano en ganar etapa del Giro en 23 años">
+    <div class="hcard" data-p="hAtletas" data-v="https://cdn.shopify.com/videos/c/vp/d7f522ee836d4fdb9c87676e33a12e7a/d7f522ee836d4fdb9c87676e33a12e7a.HD-720p-3.0Mbps-80190283.mp4" data-t="Isaac del Toro — Victoria Histórica" data-d="El orgullo de México sobre Colnago">
       <img src="https://img.youtube.com/vi/HsV_K1FCm5k/maxresdefault.jpg" alt="Isaac del Toro">
       <div class="ho"><h3>ATLETAS</h3><p>Los mejores del mundo</p><small>Click para ver →</small></div>
     </div>
@@ -457,15 +459,9 @@ bc.forEach((c,i)=>{
       bc.forEach((x,j)=>{x.classList.remove('on');if(j!==i)bclick[j]=0;});
       c.classList.add('on');
       const vd=document.getElementById('bv');
-      // Reset to thumbnail (no iframe load = fast)
-      const thumb=vd.querySelector('.vd-thumb');
-      const play=vd.querySelector('.vd-play');
-      const iframe=vd.querySelector('iframe');
-      thumb.src='https://img.youtube.com/vi/'+c.dataset.v+'/maxresdefault.jpg';
-      thumb.classList.remove('gone');
-      if(play)play.classList.remove('gone');
-      iframe.src='';
-      vd.dataset.vid=c.dataset.v;
+      const vid=document.getElementById('bvVid');
+      vid.src=c.dataset.v;
+      vid.load();vid.play();
       document.getElementById('bvt').textContent=c.dataset.t;
       document.getElementById('bvd').textContent=c.dataset.d;
       gsap.from(vd,{y:25,opacity:0,duration:.5,ease:'power2.out'});
@@ -492,14 +488,9 @@ hc.forEach((c,i)=>{
       hc.forEach((x,j)=>{x.classList.remove('on');if(j!==i)hclick[j]=0;});
       c.classList.add('on');
       const vd=document.getElementById('hv');
-      const thumb=vd.querySelector('.vd-thumb');
-      const play=vd.querySelector('.vd-play');
-      const iframe=vd.querySelector('iframe');
-      thumb.src='https://img.youtube.com/vi/'+c.dataset.v+'/maxresdefault.jpg';
-      thumb.classList.remove('gone');
-      if(play)play.classList.remove('gone');
-      iframe.src='';
-      vd.dataset.vid=c.dataset.v;
+      const vid=document.getElementById('hvVid');
+      vid.src=c.dataset.v;
+      vid.load();vid.play();
       document.getElementById('hvt').textContent=c.dataset.t;
       document.getElementById('hvd').textContent=c.dataset.d;
       gsap.from(vd,{y:25,opacity:0,duration:.5,ease:'power2.out'});
