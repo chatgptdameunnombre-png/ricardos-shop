@@ -48,8 +48,8 @@ nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 
 /* === HERO === */
 #hero{position:relative;height:100vh;overflow:hidden}
-.hbg{position:absolute;inset:0}
-.hbg iframe{width:300%;height:300%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:none;pointer-events:none}
+.hbg{position:absolute;inset:0;overflow:hidden}
+.hbg iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:none;pointer-events:none}
 .hov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,5,5,.55) 0%,rgba(5,5,5,.1) 30%,rgba(5,5,5,.45) 65%,#050505 100%)}
 .hc{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem}
 .ht{font-family:var(--font-b);font-size:.72rem;font-weight:500;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
@@ -85,12 +85,17 @@ nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 .gc.on small{opacity:1}
 
 /* === VIDEO DISPLAY === */
-.vd{width:92%;max-width:1100px;margin:2rem auto;aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;display:none}
-.vd.vis{display:block}
+.vd{width:92%;max-width:1100px;margin:2rem auto;aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;cursor:pointer;background:#000}
 .vd iframe{width:100%;height:100%;border:none}
-.vd .vdi{position:absolute;bottom:0;left:0;right:0;padding:1.8rem 2rem;background:linear-gradient(transparent,rgba(5,5,5,.92));z-index:2}
+.vd .vdi{position:absolute;bottom:0;left:0;right:0;padding:1.8rem 2rem;background:linear-gradient(transparent,rgba(5,5,5,.92));z-index:2;pointer-events:none}
 .vd .vdi h3{font-family:var(--font-h);font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:.04em}
 .vd .vdi p{color:var(--dim);font-size:.78rem;margin-top:.2rem}
+.vd-thumb{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;transition:opacity .4s}
+.vd-thumb.gone{opacity:0;pointer-events:none}
+.vd-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:60px;height:60px;border-radius:50%;background:rgba(201,168,76,.9);display:flex;align-items:center;justify-content:center;transition:transform .3s,box-shadow .3s}
+.vd-play:hover{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 30px var(--gold-glow)}
+.vd-play svg{width:20px;height:20px;fill:var(--black);margin-left:3px}
+.vd-play.gone{display:none}
 
 /* === PRODUCTS === */
 #prods{padding:2rem 0 3rem;display:none}
@@ -134,7 +139,11 @@ nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 .db{margin-bottom:3.5rem}
 .db h3{font-family:var(--font-h);font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.04em;color:var(--gold);margin-bottom:.8rem}
 .db p{font-size:.88rem;color:var(--dim);line-height:1.8;max-width:700px;margin-bottom:1rem}
-.db iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:8px;margin-bottom:.8rem}
+.db iframe,.db .lv{width:100%;aspect-ratio:16/9;border:none;border-radius:8px;margin-bottom:.8rem}
+.lv{position:relative;cursor:pointer;overflow:hidden;display:block}
+.lv img{width:100%;height:100%;object-fit:cover}
+.lv .lv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:rgba(201,168,76,.9);display:flex;align-items:center;justify-content:center}
+.lv .lv-play svg{width:16px;height:16px;fill:var(--black);margin-left:2px}
 .da{padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .da h4{font-family:var(--font-h);font-size:1.2rem;letter-spacing:.04em}
 .da .tg{font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-top:.15rem}
@@ -208,7 +217,7 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
 <!-- HERO -->
 <section id="hero">
   <div class="hbg">
-    <iframe src="https://www.youtube.com/embed/2y7ecfsDDTg?autoplay=1&mute=1&loop=1&playlist=2y7ecfsDDTg&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&vq=hd1080" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+    <iframe src="https://www.youtube-nocookie.com/embed/2y7ecfsDDTg?autoplay=1&mute=1&loop=1&playlist=2y7ecfsDDTg&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&vq=hd1080" allow="autoplay;encrypted-media" allowfullscreen></iframe>
   </div>
   <div class="hov"></div>
   <div class="hc">
@@ -224,9 +233,11 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
 <section id="bikes">
   <div class="st"><h2>BICICLETAS <em>COLNAGO</em></h2><p>Selecciona una categoría</p></div>
 
-  <div class="vd" id="bv">
-    <iframe id="bvf" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-    <div class="vdi"><h3 id="bvt"></h3><p id="bvd"></p></div>
+  <div class="vd" id="bv" data-vid="NaGcPjZoJ5Y" onclick="loadVid(this)">
+    <img class="vd-thumb" id="bvThumb" src="https://img.youtube.com/vi/NaGcPjZoJ5Y/maxresdefault.jpg" alt="">
+    <div class="vd-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    <iframe id="bvf" src="" allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
+    <div class="vdi"><h3 id="bvt">Y1Rs UAE Team Build — Oficial Colnago</h3><p id="bvd">Armado oficial de la Y1Rs del equipo UAE Team Emirates</p></div>
   </div>
 
   <div class="crow" id="bcards">
@@ -288,9 +299,11 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
 <section id="history">
   <div class="st"><h2>HISTORIA DE <em>COLNAGO</em></h2><p>70 años forjando leyendas sobre dos ruedas</p></div>
 
-  <div class="vd" id="hv">
-    <iframe id="hvf" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-    <div class="vdi"><h3 id="hvt"></h3><p id="hvd"></p></div>
+  <div class="vd" id="hv" data-vid="YSBqXB3Sybo" onclick="loadVid(this)">
+    <img class="vd-thumb" id="hvThumb" src="https://img.youtube.com/vi/YSBqXB3Sybo/maxresdefault.jpg" alt="">
+    <div class="vd-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+    <iframe id="hvf" src="" allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
+    <div class="vdi"><h3 id="hvt">Colnago C68 — Fatto a Mano in Italia</h3><p id="hvd">El arte de fabricar bicicletas a mano desde 1954</p></div>
   </div>
 
   <div class="crow" id="hcards">
@@ -303,14 +316,14 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
       <div class="ho"><h3>BICICLETAS</h3><p>Modelos legendarios</p><small>Click para ver →</small></div>
     </div>
     <div class="hcard" data-p="hAtletas" data-v="EQMdFVbH8Jg" data-t="Isaac del Toro — Victoria Histórica" data-d="Primer mexicano en ganar etapa del Giro en 23 años">
-      <img src="https://www.uaeteamemirates.com/wp-content/uploads/2025/12/DelToro-1.png" alt="Isaac del Toro">
+      <img src="https://img.youtube.com/vi/HsV_K1FCm5k/maxresdefault.jpg" alt="Isaac del Toro">
       <div class="ho"><h3>ATLETAS</h3><p>Los mejores del mundo</p><small>Click para ver →</small></div>
     </div>
   </div>
 
   <!-- Detail: Colnago -->
   <div class="dp" id="hColnago">
-    <div class="db"><h3>LA LEYENDA DE CAMBIAGO — 1954</h3><p>Ernesto Colnago fundó su taller en Cambiago, cerca de Milán. Lo que comenzó como un sueño se convirtió en una de las marcas más prestigiosas del mundo. Hoy cada C68 sigue fabricándose a mano en la misma ciudad.</p><iframe src="https://www.youtube.com/embed/YSBqXB3Sybo" loading="lazy" allow="encrypted-media" allowfullscreen></iframe></div>
+    <div class="db"><h3>LA LEYENDA DE CAMBIAGO — 1954</h3><p>Ernesto Colnago fundó su taller en Cambiago, cerca de Milán. Lo que comenzó como un sueño se convirtió en una de las marcas más prestigiosas del mundo. Hoy cada C68 sigue fabricándose a mano en la misma ciudad.</p><div class="lv" onclick="this.outerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/YSBqXB3Sybo?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen style=\'width:100%;aspect-ratio:16/9;border:none;border-radius:8px\'></iframe>'"><img src="https://img.youtube.com/vi/YSBqXB3Sybo/maxresdefault.jpg" alt=""><div class="lv-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
     <div class="db"><h3>EL RÉCORD DE MERCKX — 1972</h3><p>Ernesto construyó personalmente la bici de 5.5 kg con la que Eddy Merckx rompió el récord de la hora. Ese momento selló a Colnago como la marca del más grande ciclista de la historia.</p></div>
     <div class="db"><h3>DE MERCKX A POGAČAR</h3><p>La única marca que conecta al más grande de la historia con el más grande del presente. 70 años de victorias en Grand Tours, Monumentos y Campeonatos del Mundo.</p></div>
     <div style="text-align:center;padding:2rem 0"><a href="#bikes" class="bg">COMPRAR BICICLETAS →</a></div>
@@ -318,8 +331,8 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
 
   <!-- Detail: Bikes -->
   <div class="dp" id="hBikes">
-    <div class="db"><h3>C40 — LA REVOLUCIÓN DEL CARBONO (1994)</h3><p>La primera bici de carbono con lugs de Colnago. Franco Ballerini ganó la París-Roubaix 1995 — la primera bici de carbono en hacerlo. Serie C: C35→C40→C50→C59→C60→C64→C68.</p><iframe src="https://www.youtube.com/embed/J0pYS1eeU2A" loading="lazy" allow="encrypted-media" allowfullscreen></iframe></div>
-    <div class="db"><h3>MASTER — CLÁSICO INMORTAL (1982)</h3><p>Tubos Columbus en forma de estrella, soldadura a mano. 40+ años después sigue en producción. El símbolo de la artesanía italiana pura.</p><iframe src="https://www.youtube.com/embed/TsSZtGek-aQ" loading="lazy" allow="encrypted-media" allowfullscreen></iframe></div>
+    <div class="db"><h3>C40 — LA REVOLUCIÓN DEL CARBONO (1994)</h3><p>La primera bici de carbono con lugs de Colnago. Franco Ballerini ganó la París-Roubaix 1995 — la primera bici de carbono en hacerlo. Serie C: C35→C40→C50→C59→C60→C64→C68.</p><div class="lv" onclick="this.outerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/J0pYS1eeU2A?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen style=\'width:100%;aspect-ratio:16/9;border:none;border-radius:8px\'></iframe>'"><img src="https://img.youtube.com/vi/J0pYS1eeU2A/maxresdefault.jpg" alt=""><div class="lv-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
+    <div class="db"><h3>MASTER — CLÁSICO INMORTAL (1982)</h3><p>Tubos Columbus en forma de estrella, soldadura a mano. 40+ años después sigue en producción. El símbolo de la artesanía italiana pura.</p><div class="lv" onclick="this.outerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/TsSZtGek-aQ?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen style=\'width:100%;aspect-ratio:16/9;border:none;border-radius:8px\'></iframe>'"><img src="https://img.youtube.com/vi/TsSZtGek-aQ/maxresdefault.jpg" alt=""><div class="lv-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>
     <div class="db"><h3>ARABESQUE — ARTE SOBRE RUEDAS (1983)</h3><p>Lugs ornamentales inspirados en el arte islámico. Redescubierta cuando encontraron los moldes originales en el sótano de la fábrica.</p></div>
     <div style="text-align:center;padding:2rem 0"><a href="#bikes" class="bg">COMPRAR BICICLETAS →</a></div>
   </div>
@@ -329,13 +342,13 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
     <div class="db">
       <h3>🇲🇽 ISAAC DEL TORO — EL ORGULLO DE MÉXICO</h3>
       <p>Subcampeón del Giro d'Italia 2025. Maglia Rosa durante 11 etapas consecutivas — algo que no hacía un ciclista tan joven desde Fausto Coppi en 1940. Campeón del UAE Tour y Tirreno-Adriático 2026. El futuro del ciclismo mundial habla español.</p>
-      <iframe src="https://www.youtube.com/embed/EQMdFVbH8Jg" loading="lazy" allow="encrypted-media" allowfullscreen></iframe>
+      <div class="lv" onclick="this.outerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/EQMdFVbH8Jg?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen style=\'width:100%;aspect-ratio:16/9;border:none;border-radius:8px\'></iframe>'"><img src="https://img.youtube.com/vi/EQMdFVbH8Jg/maxresdefault.jpg" alt=""><div class="lv-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
       <p>Su Y1Rs Dark: negra total con detalles dorados, armada a medida para su estilo de escalador explosivo.</p>
-      <iframe src="https://www.youtube.com/embed/HsV_K1FCm5k" loading="lazy" allow="encrypted-media" allowfullscreen></iframe>
+      <div class="lv" onclick="this.outerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/HsV_K1FCm5k?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen style=\'width:100%;aspect-ratio:16/9;border:none;border-radius:8px\'></iframe>'"><img src="https://img.youtube.com/vi/HsV_K1FCm5k/maxresdefault.jpg" alt=""><div class="lv-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
     </div>
     <div class="db">
       <div class="da"><h4>🇸🇮 TADEJ POGAČAR</h4><div class="tg">UAE Team Emirates — Líder</div><p>El mejor ciclista del mundo. 4 Grand Tours, 2x Campeón del Mundo, 85+ victorias. Domina Grand Tours y Monumentos como nadie en la historia moderna.</p></div>
-      <iframe src="https://www.youtube.com/embed/eMfErejtKd0" loading="lazy" allow="encrypted-media" allowfullscreen style="width:100%;aspect-ratio:16/9;border:none;border-radius:8px;margin-top:1.2rem"></iframe>
+      <div class="lv" style="margin-top:1.2rem" onclick="this.outerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/eMfErejtKd0?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen style=\'width:100%;aspect-ratio:16/9;border:none;border-radius:8px\'></iframe>'"><img src="https://img.youtube.com/vi/eMfErejtKd0/maxresdefault.jpg" alt=""><div class="lv-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
     </div>
     <div class="db">
       <div class="da"><h4>🇬🇧 ADAM YATES</h4><div class="tg">UAE Team Emirates</div><p>3ro Tour de France 2023. Ganador de múltiples carreras por etapas. Pieza clave del equipo.</p></div>
@@ -409,6 +422,19 @@ function heroAnim(){
     .from('.hsc',{opacity:0,duration:.5},'-=.2');
 }
 
+// Load video on click (replaces thumbnail with iframe)
+function loadVid(el){
+  const thumb=el.querySelector('.vd-thumb');
+  const play=el.querySelector('.vd-play');
+  const iframe=el.querySelector('iframe');
+  if(thumb && !thumb.classList.contains('gone')){
+    const vid=el.dataset.vid||'';
+    if(vid) iframe.src='https://www.youtube-nocookie.com/embed/'+vid+'?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0&playsinline=1';
+    thumb.classList.add('gone');
+    if(play) play.classList.add('gone');
+  }
+}
+
 // Glow effect for all cards
 function glowSetup(cards){
   cards.forEach(c=>c.addEventListener('mousemove',e=>{
@@ -431,10 +457,17 @@ bc.forEach((c,i)=>{
       bc.forEach((x,j)=>{x.classList.remove('on');if(j!==i)bclick[j]=0;});
       c.classList.add('on');
       const vd=document.getElementById('bv');
-      document.getElementById('bvf').src='https://www.youtube.com/embed/'+c.dataset.v+'?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1';
+      // Reset to thumbnail (no iframe load = fast)
+      const thumb=vd.querySelector('.vd-thumb');
+      const play=vd.querySelector('.vd-play');
+      const iframe=vd.querySelector('iframe');
+      thumb.src='https://img.youtube.com/vi/'+c.dataset.v+'/maxresdefault.jpg';
+      thumb.classList.remove('gone');
+      if(play)play.classList.remove('gone');
+      iframe.src='';
+      vd.dataset.vid=c.dataset.v;
       document.getElementById('bvt').textContent=c.dataset.t;
       document.getElementById('bvd').textContent=c.dataset.d;
-      vd.classList.add('vis');
       gsap.from(vd,{y:25,opacity:0,duration:.5,ease:'power2.out'});
     } else {
       bclick[i]=0;
@@ -459,10 +492,16 @@ hc.forEach((c,i)=>{
       hc.forEach((x,j)=>{x.classList.remove('on');if(j!==i)hclick[j]=0;});
       c.classList.add('on');
       const vd=document.getElementById('hv');
-      document.getElementById('hvf').src='https://www.youtube.com/embed/'+c.dataset.v+'?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1';
+      const thumb=vd.querySelector('.vd-thumb');
+      const play=vd.querySelector('.vd-play');
+      const iframe=vd.querySelector('iframe');
+      thumb.src='https://img.youtube.com/vi/'+c.dataset.v+'/maxresdefault.jpg';
+      thumb.classList.remove('gone');
+      if(play)play.classList.remove('gone');
+      iframe.src='';
+      vd.dataset.vid=c.dataset.v;
       document.getElementById('hvt').textContent=c.dataset.t;
       document.getElementById('hvd').textContent=c.dataset.d;
-      vd.classList.add('vis');
       gsap.from(vd,{y:25,opacity:0,duration:.5,ease:'power2.out'});
     } else {
       hclick[i]=0;
