@@ -10,11 +10,8 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Inter',sans-serif;background:#050505;color:#f0f0f0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}
-button{border:none;background:none;cursor:pointer;font-family:inherit;color:inherit}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:#050505}
-::-webkit-scrollbar-thumb{background:#c9a84c;border-radius:3px}
+a{text-decoration:none;color:inherit}button{border:none;background:none;cursor:pointer;font-family:inherit;color:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#050505}::-webkit-scrollbar-thumb{background:#c9a84c;border-radius:3px}
 :root{
   --gold:#c9a84c;--gold-light:#e0c374;--gold-glow:rgba(201,168,76,.35);
   --black:#050505;--surface:#0a0a0a;--card:#0e0e0e;
@@ -23,7 +20,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit;color:inhe
   --ease:cubic-bezier(.4,0,.2,1);
 }
 
-/* === PRELOADER === */
+/* PRELOADER */
 #pre{position:fixed;inset:0;z-index:9999;background:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
 #pre.off{opacity:0;visibility:hidden;pointer-events:none}
 #pre h1{font-family:var(--font-h);font-size:clamp(2.5rem,6vw,4.5rem);color:var(--gold);letter-spacing:.08em;opacity:0;animation:fu .7s .2s ease forwards}
@@ -32,7 +29,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit;color:inhe
 @keyframes fu{to{opacity:1;transform:translateY(0)}}
 @keyframes fb{to{width:100%}}
 
-/* === NAV === */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4%;transition:all .4s var(--ease)}
 nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 .nb{font-family:var(--font-h);font-size:1.5rem;color:var(--gold);letter-spacing:.06em}
@@ -46,12 +43,12 @@ nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 .lt .on{background:var(--gold);color:var(--black)}
 .lt button:not(.on):hover{background:rgba(201,168,76,.1)}
 
-/* === HERO === */
-#hero{position:relative;height:100vh;overflow:hidden}
-.hbg{position:absolute;inset:0;overflow:hidden}
-.hbg video{width:100%;height:100%;object-fit:cover}
-.hov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,5,5,.55) 0%,rgba(5,5,5,.1) 30%,rgba(5,5,5,.45) 65%,#050505 100%)}
-.hc{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem}
+/* HERO + FULLSCREEN VIDEOS */
+.fs{position:relative;height:100vh;overflow:hidden}
+.fs video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fs .ov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,5,5,.5) 0%,rgba(5,5,5,.1) 30%,rgba(5,5,5,.4) 65%,#050505 100%)}
+.fs .ct{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem}
+
 .ht{font-family:var(--font-b);font-size:.72rem;font-weight:500;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
 .hh{font-family:var(--font-h);font-size:clamp(4.5rem,14vw,11rem);line-height:.88;color:var(--white)}
 .hh em{font-style:normal;color:var(--gold)}
@@ -65,109 +62,48 @@ nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 .hsc i{display:block;width:1px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);animation:pu 2s ease infinite}
 @keyframes pu{0%,100%{opacity:.3;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
 
-/* === SECTION TITLES === */
+/* MOTIVATION SECTION */
+#moti{padding:6rem 2rem;text-align:center;background:var(--black);position:relative;overflow:hidden}
+.moti-text{font-family:var(--font-h);font-size:clamp(1.8rem,4.5vw,3.5rem);letter-spacing:.06em;line-height:1.2;background:linear-gradient(90deg,var(--muted),var(--white),var(--gold-light),var(--white),var(--muted));background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine 4s ease infinite}
+@keyframes shine{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.moti-line{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.5rem auto 0}
+
+/* SECTION HEADERS */
 .st{text-align:center;padding:5rem 2rem 2.5rem}
 .st h2{font-family:var(--font-h);font-size:clamp(2.5rem,5vw,3.8rem);letter-spacing:.05em}
 .st h2 em{font-style:normal;color:var(--gold)}
-.st p{color:var(--dim);font-size:.82rem;margin-top:.4rem;letter-spacing:.03em}
+.st p{color:var(--dim);font-size:.82rem;margin-top:.4rem}
 
-/* === GLOW CARDS === */
+/* GLOW CARDS */
 .crow{display:flex;justify-content:center;gap:1.2rem;padding:0 4%;flex-wrap:wrap}
-.gc{position:relative;flex:0 0 220px;height:120px;border-radius:10px;background:var(--card);border:1px solid rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s}
+.gc{position:relative;flex:0 0 260px;height:130px;border-radius:10px;background:var(--card);border:1px solid rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s}
 .gc::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:radial-gradient(350px circle at var(--mx,50%) var(--my,50%),var(--gold-glow),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
 .gc:hover::before{opacity:1}
 .gc:hover{transform:translateY(-8px) scale(1.04);border-color:rgba(201,168,76,.2);box-shadow:0 16px 45px rgba(0,0,0,.5),0 0 25px rgba(201,168,76,.08)}
 .gc.on{transform:translateY(-12px) scale(1.08);border-color:var(--gold);box-shadow:0 16px 55px rgba(0,0,0,.6),0 0 45px rgba(201,168,76,.15)}
-.gc h3{font-family:var(--font-h);font-size:1.4rem;letter-spacing:.06em;position:relative;z-index:1;transition:color .3s}
+.gc h3{font-family:var(--font-h);font-size:1.5rem;letter-spacing:.06em;position:relative;z-index:1;transition:color .3s}
 .gc:hover h3,.gc.on h3{color:var(--gold)}
 .gc span{font-size:.6rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.15rem;position:relative;z-index:1}
-.gc small{font-size:.55rem;color:var(--gold);margin-top:.5rem;opacity:0;transition:opacity .3s;position:relative;z-index:1}
-.gc.on small{opacity:1}
 
-/* === VIDEO DISPLAY === */
-.vd{width:92%;max-width:1100px;margin:2rem auto;aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;cursor:pointer;background:#000}
-.vd iframe,.vd video{width:100%;height:100%;border:none;object-fit:cover}
-.vd .vdi{position:absolute;bottom:0;left:0;right:0;padding:1.8rem 2rem;background:linear-gradient(transparent,rgba(5,5,5,.92));z-index:2;pointer-events:none}
-.vd .vdi h3{font-family:var(--font-h);font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:.04em}
-.vd .vdi p{color:var(--dim);font-size:.78rem;margin-top:.2rem}
-.vd-thumb{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;transition:opacity .4s}
-.vd-thumb.gone{opacity:0;pointer-events:none}
-.vd-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:60px;height:60px;border-radius:50%;background:rgba(201,168,76,.9);display:flex;align-items:center;justify-content:center;transition:transform .3s,box-shadow .3s}
-.vd-play:hover{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 30px var(--gold-glow)}
-.vd-play svg{width:20px;height:20px;fill:var(--black);margin-left:3px}
-.vd-play.gone{display:none}
+/* HISTORY CARDS WITH IMAGES */
+.hcard{position:relative;flex:0 0 300px;height:200px;border-radius:10px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,.04);transition:transform .4s var(--ease),border-color .4s,box-shadow .4s}
+.hcard::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),var(--gold-glow),transparent 60%);opacity:0;transition:opacity .4s;z-index:3;pointer-events:none}
+.hcard:hover::before{opacity:1}
+.hcard:hover{transform:translateY(-8px) scale(1.03);border-color:rgba(201,168,76,.2);box-shadow:0 16px 45px rgba(0,0,0,.5),0 0 25px rgba(201,168,76,.08)}
+.hcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s var(--ease)}
+.hcard:hover img{transform:scale(1.08)}
+.hcard .ho{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(5,5,5,.95) 0%,rgba(5,5,5,.3) 50%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem}
+.hcard .ho h3{font-family:var(--font-h);font-size:1.5rem;letter-spacing:.06em;transition:color .3s}
+.hcard:hover .ho h3{color:var(--gold)}
+.hcard .ho p{font-size:.72rem;color:var(--dim);margin-top:.2rem}
 
-/* === PRODUCTS === */
-#prods{padding:2rem 0 3rem;display:none}
-#prods.vis{display:block}
-.pr{display:flex;align-items:center;gap:4rem;padding:4rem 5%;max-width:1200px;margin:0 auto}
-.pr.rv{flex-direction:row-reverse}
-.pm{flex:1;border-radius:8px;overflow:hidden}
-.pm img{width:100%;height:auto;border-radius:8px;transition:transform .6s var(--ease)}
-.pm:hover img{transform:scale(1.03)}
-.pi{flex:1;max-width:460px}
-.pb{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:.2rem .6rem;border-radius:2px;margin-bottom:1rem}
-.pn{font-family:var(--font-h);font-size:clamp(2.2rem,4.5vw,3.5rem);line-height:1;letter-spacing:.03em;margin-bottom:.8rem}
-.pd{font-size:.85rem;color:var(--dim);line-height:1.8;margin-bottom:1.2rem}
-.ps{display:flex;gap:1.5rem;margin-bottom:1.8rem}
-.ps .v{font-family:var(--font-h);font-size:1.5rem;color:var(--gold)}
-.ps .l{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.1rem}
+/* BUTTONS */
 .bg{display:inline-flex;padding:.75rem 1.8rem;background:var(--gold);color:var(--black);font-family:var(--font-h);font-size:.85rem;letter-spacing:.1em;border-radius:2px;transition:all .3s var(--ease)}
 .bg:hover{background:var(--gold-light);transform:scale(1.05);box-shadow:0 4px 20px var(--gold-glow)}
 .bo{display:inline-flex;padding:.75rem 1.8rem;border:1.5px solid var(--gold);color:var(--gold);font-family:var(--font-h);font-size:.85rem;letter-spacing:.1em;border-radius:2px;transition:all .3s var(--ease)}
 .bo:hover{background:var(--gold);color:var(--black);transform:scale(1.05)}
-.pdiv{width:70%;max-width:500px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.12),transparent)}
 
-/* === HISTORY SECTION === */
-.hcard{position:relative;flex:0 0 300px;height:180px;border-radius:10px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,.04);transition:transform .4s var(--ease),border-color .4s,box-shadow .4s}
-.hcard::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),var(--gold-glow),transparent 60%);opacity:0;transition:opacity .4s;z-index:3;pointer-events:none}
-.hcard:hover::before{opacity:1}
-.hcard:hover{transform:translateY(-8px) scale(1.03);border-color:rgba(201,168,76,.2);box-shadow:0 16px 45px rgba(0,0,0,.5),0 0 25px rgba(201,168,76,.08)}
-.hcard.on{transform:translateY(-12px) scale(1.07);border-color:var(--gold);box-shadow:0 16px 55px rgba(0,0,0,.6),0 0 45px rgba(201,168,76,.15)}
-.hcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s var(--ease)}
-.hcard:hover img{transform:scale(1.08)}
-.hcard .ho{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(5,5,5,.95) 0%,rgba(5,5,5,.3) 50%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:1.3rem}
-.hcard .ho h3{font-family:var(--font-h);font-size:1.4rem;letter-spacing:.06em;transition:color .3s}
-.hcard:hover .ho h3,.hcard.on .ho h3{color:var(--gold)}
-.hcard .ho p{font-size:.7rem;color:var(--dim);margin-top:.15rem}
-.hcard .ho small{font-size:.55rem;color:var(--gold);margin-top:.4rem;opacity:0;transition:opacity .3s}
-.hcard.on .ho small{opacity:1}
-
-/* === DETAIL PANEL === */
-.dp{display:none;padding:3rem 5%;max-width:1000px;margin:0 auto}
-.dp.vis{display:block}
-.db{margin-bottom:3.5rem}
-.db h3{font-family:var(--font-h);font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.04em;color:var(--gold);margin-bottom:.8rem}
-.db p{font-size:.88rem;color:var(--dim);line-height:1.8;max-width:700px;margin-bottom:1rem}
-.db iframe,.db .lv{width:100%;aspect-ratio:16/9;border:none;border-radius:8px;margin-bottom:.8rem}
-.lv{position:relative;cursor:pointer;overflow:hidden;display:block}
-.lv img{width:100%;height:100%;object-fit:cover}
-.lv .lv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:rgba(201,168,76,.9);display:flex;align-items:center;justify-content:center}
-.lv .lv-play svg{width:16px;height:16px;fill:var(--black);margin-left:2px}
-.da{padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.da h4{font-family:var(--font-h);font-size:1.2rem;letter-spacing:.04em}
-.da .tg{font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-top:.15rem}
-.da p{font-size:.82rem;color:var(--dim);margin-top:.4rem;line-height:1.7}
-
-/* === MODALS === */
-.modal{position:fixed;inset:0;z-index:2000;background:rgba(5,5,5,.92);backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center}
-.modal.show{display:flex}
-.mb{max-width:520px;width:90%;text-align:center;padding:2.5rem;position:relative}
-.mx{position:absolute;top:-.8rem;right:-.8rem;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .3s}
-.mx:hover{border-color:var(--gold);background:rgba(201,168,76,.1)}
-.cbox{max-width:550px;width:90%;padding:2.5rem;background:var(--card);border:1px solid rgba(201,168,76,.1);border-radius:10px;position:relative}
-.ci{display:flex;align-items:center;gap:1rem;padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.ci h4{font-family:var(--font-h);font-size:1rem;letter-spacing:.04em}
-.ci p{font-size:.7rem;color:var(--muted)}
-.ct{display:flex;justify-content:space-between;padding:1rem 0;margin-top:.5rem}
-.ct span{font-family:var(--font-h);font-size:1.1rem}
-.ct .price{color:var(--gold);font-size:1.2rem}
-.pmsg{display:none;text-align:center;padding:1.2rem;margin-top:1rem;border:1px solid rgba(201,168,76,.12);border-radius:8px;background:rgba(201,168,76,.03)}
-.pmsg.show{display:block}
-.pmsg h3{font-family:var(--font-h);font-size:1.1rem;color:var(--gold);margin-bottom:.2rem}
-.pmsg p{color:var(--dim);font-size:.78rem}
-
-/* === WHATSAPP === */
+/* WHATSAPP */
 .wf{position:fixed;bottom:2rem;right:2rem;z-index:900;width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 22px var(--gold-glow);transition:transform .3s,box-shadow .3s;cursor:pointer}
 .wf:hover{transform:scale(1.12);box-shadow:0 6px 30px rgba(201,168,76,.5)}
 .wf svg{width:24px;height:24px;fill:var(--black)}
@@ -176,7 +112,7 @@ nav.s{background:rgba(5,5,5,.92);backdrop-filter:blur(20px);padding:1rem 4%}
 .wt p{font-size:.7rem;color:var(--dim)}
 .wt b{color:var(--gold)}
 
-/* === FOOTER === */
+/* FOOTER */
 footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgba(255,255,255,.04)}
 .fi{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:2rem}
 .fb h3{font-family:var(--font-h);font-size:1.3rem;color:var(--gold);letter-spacing:.06em}
@@ -188,9 +124,8 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
 
 @media(max-width:768px){
   .nl{display:none}
-  .crow,.hist-row{flex-direction:column;align-items:center}
+  .crow{flex-direction:column;align-items:center}
   .gc,.hcard{flex:none;width:85%}
-  .pr,.pr.rv{flex-direction:column!important;padding:2.5rem 5%}
   .fi{flex-direction:column}
 }
 </style>
@@ -214,15 +149,13 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hbg">
-    <video autoplay muted loop playsinline>
-      <source src="https://cdn.shopify.com/videos/c/vp/d7f522ee836d4fdb9c87676e33a12e7a/d7f522ee836d4fdb9c87676e33a12e7a.HD-720p-3.0Mbps-80190283.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hov"></div>
-  <div class="hc">
+<!-- HERO — video Y1Rs -->
+<section id="hero" class="fs">
+  <video autoplay muted loop playsinline>
+    <source src="https://cdn.shopify.com/videos/c/vp/d7f522ee836d4fdb9c87676e33a12e7a/d7f522ee836d4fdb9c87676e33a12e7a.HD-720p-3.0Mbps-80190283.mp4" type="video/mp4">
+  </video>
+  <div class="ov"></div>
+  <div class="ct">
     <p class="ht">Distribuidor Autorizado Colnago</p>
     <h1 class="hh">RICARDO'S<br><em>SHOP</em></h1>
     <p class="hs">Las bicicletas de Pogačar e Isaac del Toro. 70 años de artesanía italiana, ahora en México.</p>
@@ -231,149 +164,60 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
   <div class="hsc"><span>Scroll</span><i></i></div>
 </section>
 
-<!-- BIKES SECTION -->
-<section id="bikes">
-  <div class="st"><h2>BICICLETAS <em>COLNAGO</em></h2><p>Selecciona una categoría</p></div>
+<!-- MOTIVATION -->
+<section id="moti">
+  <p class="moti-text">NUESTRA MOTIVACIÓN ES LLEVAR<br>LAS MEJORES BICIS A MÉXICO</p>
+  <div class="moti-line"></div>
+</section>
 
-  <div class="vd" id="bv">
+<!-- BIKES — fullscreen video + cards -->
+<section id="bikes">
+  <div class="fs" style="height:70vh">
     <video id="bvVid" autoplay muted loop playsinline>
       <source src="https://cdn.shopify.com/videos/c/vp/996caa3e03c946ec981522067bf38fca/996caa3e03c946ec981522067bf38fca.HD-720p-4.5Mbps-80190244.mp4" type="video/mp4">
     </video>
-    <div class="vdi"><h3 id="bvt">Colnago V4Rs — Máquina de Victorias</h3><p id="bvd">La bici con más victorias WorldTour en 2024</p></div>
+    <div class="ov"></div>
+    <div class="ct">
+      <h2 style="font-family:var(--font-h);font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:.05em">BICICLETAS <em style="color:var(--gold);font-style:normal">COLNAGO</em></h2>
+      <p style="color:var(--dim);font-size:.85rem;margin-top:.5rem" id="bvt">Selecciona una categoría</p>
+    </div>
   </div>
 
-  <div class="crow" id="bcards">
-    <div class="gc" data-v="https://cdn.shopify.com/videos/c/vp/825d4a2a783047e0af5a89faeba60dcd/825d4a2a783047e0af5a89faeba60dcd.HD-720p-4.5Mbps-80190241.mp4" data-t="Road — Velocidad Pura" data-d="Las máquinas de Pogačar y Del Toro"><h3>ROAD</h3><span>6 modelos</span><small>Click para ver →</small></div>
-    <div class="gc" data-v="https://a.storyblok.com/f/263970/x/1a0875ad38/colnago-c68-510r-top-to-side.mp4" data-t="Gravel — Sin Límites" data-d="Aventura donde la carretera termina"><h3>GRAVEL</h3><span>2 modelos</span><small>Click para ver →</small></div>
-    <div class="gc" data-v="https://a.storyblok.com/f/263970/x/fefb84d0ba/colnago-c68-510r-front-to-34.mp4" data-t="Allroad — Versatilidad" data-d="Asfalto y caminos con artesanía C68"><h3>ALLROAD</h3><span>1 modelo</span><small>Click para ver →</small></div>
-    <div class="gc" data-v="https://cdn.shopify.com/videos/c/vp/465f7c4fa80c4db88a59c9cd634dc8fe/465f7c4fa80c4db88a59c9cd634dc8fe.HD-720p-4.5Mbps-80190290.mp4" data-t="Time Trial — Contra el Reloj" data-d="Aerodinámica extrema"><h3>TIME TRIAL</h3><span>1 modelo</span><small>Click para ver →</small></div>
-  </div>
-
-  <div id="prods">
-    <div class="pr">
-      <div class="pm"><img src="https://a.storyblok.com/f/263970/8215x5315/4b6325334b/colnago_y1rs_wcblack_prospettiva-ant-fondo-nero.jpg" alt="Y1Rs" loading="lazy"></div>
-      <div class="pi">
-        <span class="pb">FLAGSHIP AERO</span>
-        <h2 class="pn">COLNAGO Y1Rs</h2>
-        <p class="pd">La bicicleta más aerodinámica de Colnago. 20 watts menos a 50 km/h. El arma de Pogačar para el Tour de France.</p>
-        <div class="ps"><div><div class="v">-20W</div><div class="l">A 50 km/h</div></div><div><div class="v">-19%</div><div class="l">Área frontal</div></div><div><div class="v">7.2kg</div><div class="l">Peso</div></div></div>
-        <button class="bg cart" data-n="Colnago Y1Rs">AGREGAR AL CARRITO</button>
-      </div>
-    </div>
-    <div class="pdiv"></div>
-    <div class="pr rv">
-      <div class="pm"><img src="https://a.storyblok.com/f/263970/3840x2400/37435a2b62/colnago-2025-y1rs-34-black-white.jpg" alt="V5Rs" loading="lazy"></div>
-      <div class="pi">
-        <span class="pb">ULTRALIGERA</span>
-        <h2 class="pn">COLNAGO V5Rs</h2>
-        <p class="pd">685 gramos de cuadro. La más ligera en la historia de Colnago. La bici de Isaac del Toro en montaña.</p>
-        <div class="ps"><div><div class="v">685g</div><div class="l">Cuadro</div></div><div><div class="v">-13%</div><div class="l">Área frontal</div></div><div><div class="v">32mm</div><div class="l">Neumáticos</div></div></div>
-        <button class="bg cart" data-n="Colnago V5Rs">AGREGAR AL CARRITO</button>
-      </div>
-    </div>
-    <div class="pdiv"></div>
-    <div class="pr">
-      <div class="pm"><img src="https://a.storyblok.com/f/263970/8215x5315/b8e52c549b/colnago-c68-blu-prospettiva-ant-fondo-nero-bagliore-oro.jpg" alt="C68" loading="lazy"></div>
-      <div class="pi">
-        <span class="pb">FATTO A MANO</span>
-        <h2 class="pn">COLNAGO C68</h2>
-        <p class="pd">100% hecha a mano en Cambiago, Italia. Juntas de titanio impresas en 3D. Geometría personalizable.</p>
-        <div class="ps"><div><div class="v">925g</div><div class="l">Cuadro</div></div><div><div class="v">3D Ti</div><div class="l">Juntas</div></div><div><div class="v">90d</div><div class="l">Entrega</div></div></div>
-        <button class="bg cart" data-n="Colnago C68">AGREGAR AL CARRITO</button>
-      </div>
-    </div>
+  <div class="crow" id="bcards" style="margin-top:-2rem;position:relative;z-index:5">
+    <a href="bikes-road.html" class="gc" data-v="https://cdn.shopify.com/videos/c/vp/825d4a2a783047e0af5a89faeba60dcd/825d4a2a783047e0af5a89faeba60dcd.HD-720p-4.5Mbps-80190241.mp4"><h3>ROAD</h3><span>4 modelos</span></a>
+    <a href="bikes-gravel.html" class="gc" data-v="https://cdn.shopify.com/videos/c/vp/c71ddbcd37c3420bb66b82a4b431d0d1/c71ddbcd37c3420bb66b82a4b431d0d1.HD-720p-3.0Mbps-80190260.mp4"><h3>GRAVEL</h3><span>2 modelos</span></a>
+    <a href="bikes-track.html" class="gc" data-v="https://cdn.shopify.com/videos/c/vp/f2905d11033d480bbf19cc093183341b/f2905d11033d480bbf19cc093183341b.HD-720p-3.0Mbps-80190291.mp4"><h3>T1Rs TRACK</h3><span>1 modelo</span></a>
   </div>
 </section>
 
-<!-- HISTORY SECTION -->
-<section id="history">
-  <div class="st"><h2>HISTORIA DE <em>COLNAGO</em></h2><p>70 años forjando leyendas sobre dos ruedas</p></div>
-
-  <div class="vd" id="hv">
+<!-- HISTORY — fullscreen video + cards -->
+<section id="history" style="padding-top:4rem">
+  <div class="fs" style="height:70vh">
     <video id="hvVid" autoplay muted loop playsinline>
-      <source src="https://a.storyblok.com/f/263970/x/d0f081ff59/colnago-2025-v5rs-sdm5-front-to-three-quarter2.mp4" type="video/mp4">
+      <source src="https://cdn.shopify.com/videos/c/vp/45c37284e741439fa2226472ea7d076d/45c37284e741439fa2226472ea7d076d.HD-720p-2.1Mbps-80193149.mp4" type="video/mp4">
     </video>
-    <div class="vdi"><h3 id="hvt">Colnago V5Rs — Rotación 3D</h3><p id="hvd">El cuadro más ligero en la historia de Colnago</p></div>
+    <div class="ov"></div>
+    <div class="ct">
+      <h2 style="font-family:var(--font-h);font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:.05em">HISTORIA DE <em style="color:var(--gold);font-style:normal">COLNAGO</em></h2>
+      <p style="color:var(--dim);font-size:.85rem;margin-top:.5rem">70 años forjando leyendas sobre dos ruedas</p>
+    </div>
   </div>
 
-  <div class="crow" id="hcards">
-    <div class="hcard" data-p="hColnago" data-v="https://cdn.shopify.com/videos/c/vp/69a5072143454b3b8fce7044f122bbb7/69a5072143454b3b8fce7044f122bbb7.HD-720p-2.1Mbps-80034509.mp4" data-t="Colnago — La Marca" data-d="70 años de excelencia italiana">
-      <img src="https://c02.purpledshub.com/uploads/sites/39/2025/02/GettyImages-2200135105_CROP-scaled.jpg" alt="Pogacar">
-      <div class="ho"><h3>COLNAGO</h3><p>La marca desde 1954</p><small>Click para ver →</small></div>
-    </div>
-    <div class="hcard" data-p="hBikes" data-v="https://a.storyblok.com/f/263970/x/31b3fa89d2/colnago-2025-v5rs-sdm5-top-to-side2.mp4" data-t="V5Rs — Rotación 3D" data-d="El cuadro más ligero jamás creado">
-      <img src="https://a.storyblok.com/f/263970/8215x5315/27d9ad71ec/y1rs-mondiale-bagliore-oro-prospettiva-anteriore.jpg" alt="Y1Rs Mundial">
-      <div class="ho"><h3>BICICLETAS</h3><p>Modelos legendarios</p><small>Click para ver →</small></div>
-    </div>
-    <div class="hcard" data-p="hAtletas" data-v="https://cdn.shopify.com/videos/c/vp/71cdc5b699e64754b44e39ee992b43ce/71cdc5b699e64754b44e39ee992b43ce.HD-720p-2.1Mbps-80190281.mp4" data-t="Isaac del Toro — En Acción" data-d="El orgullo de México sobre Colnago">
+  <div class="crow" id="hcards" style="margin-top:-2rem;position:relative;z-index:5">
+    <a href="history-colnago.html" class="hcard">
+      <img src="https://c02.purpledshub.com/uploads/sites/39/2025/02/GettyImages-2200135105_CROP-scaled.jpg" alt="Pogacar en Colnago">
+      <div class="ho"><h3>COLNAGO</h3><p>La marca desde 1954</p></div>
+    </a>
+    <a href="history-bikes.html" class="hcard">
+      <img src="https://a.storyblok.com/f/263970/8215x5315/27d9ad71ec/y1rs-mondiale-bagliore-oro-prospettiva-anteriore.jpg" alt="Y1Rs Campeon Mundial">
+      <div class="ho"><h3>BICICLETAS</h3><p>Modelos legendarios</p></div>
+    </a>
+    <a href="athletes.html" class="hcard">
       <img src="https://img.youtube.com/vi/HsV_K1FCm5k/maxresdefault.jpg" alt="Isaac del Toro">
-      <div class="ho"><h3>ATLETAS</h3><p>Los mejores del mundo</p><small>Click para ver →</small></div>
-    </div>
-  </div>
-
-  <!-- Detail: Colnago -->
-  <div class="dp" id="hColnago">
-    <div class="db"><h3>LA LEYENDA DE CAMBIAGO — 1954</h3><p>Ernesto Colnago fundó su taller en Cambiago, cerca de Milán. Lo que comenzó como un sueño se convirtió en una de las marcas más prestigiosas del mundo. Hoy cada C68 sigue fabricándose a mano en la misma ciudad.</p><video autoplay muted loop playsinline style="width:100%;aspect-ratio:16/9;border-radius:8px;object-fit:cover"><source src="https://cdn.shopify.com/videos/c/vp/1ee2f82270014be58c9c2dd87fa0320e/1ee2f82270014be58c9c2dd87fa0320e.HD-720p-3.0Mbps-80190249.mp4" type="video/mp4"></video></div>
-    <div class="db"><h3>EL RÉCORD DE MERCKX — 1972</h3><p>Ernesto construyó personalmente la bici de 5.5 kg con la que Eddy Merckx rompió el récord de la hora. Ese momento selló a Colnago como la marca del más grande ciclista de la historia.</p></div>
-    <div class="db"><h3>DE MERCKX A POGAČAR</h3><p>La única marca que conecta al más grande de la historia con el más grande del presente. 70 años de victorias en Grand Tours, Monumentos y Campeonatos del Mundo.</p></div>
-    <div style="text-align:center;padding:2rem 0"><a href="#bikes" class="bg">COMPRAR BICICLETAS →</a></div>
-  </div>
-
-  <!-- Detail: Bikes -->
-  <div class="dp" id="hBikes">
-    <div class="db"><h3>C40 — LA REVOLUCIÓN DEL CARBONO (1994)</h3><p>La primera bici de carbono con lugs de Colnago. Franco Ballerini ganó la París-Roubaix 1995 — la primera bici de carbono en hacerlo. Serie C: C35→C40→C50→C59→C60→C64→C68.</p><video autoplay muted loop playsinline style="width:100%;aspect-ratio:16/9;border-radius:8px;object-fit:cover"><source src="https://a.storyblok.com/f/263970/x/140620efe1/colnago-v4r-510-top-to-side.mp4" type="video/mp4"></video></div>
-    <div class="db"><h3>MASTER — CLÁSICO INMORTAL (1982)</h3><p>Tubos Columbus en forma de estrella, soldadura a mano. 40+ años después sigue en producción. El símbolo de la artesanía italiana pura.</p><video autoplay muted loop playsinline style="width:100%;aspect-ratio:16/9;border-radius:8px;object-fit:cover"><source src="https://a.storyblok.com/f/263970/x/22430f68dd/video-animation-reduced-1.mp4" type="video/mp4"></video></div>
-    <div class="db"><h3>ARABESQUE — ARTE SOBRE RUEDAS (1983)</h3><p>Lugs ornamentales inspirados en el arte islámico. Redescubierta cuando encontraron los moldes originales en el sótano de la fábrica.</p></div>
-    <div style="text-align:center;padding:2rem 0"><a href="#bikes" class="bg">COMPRAR BICICLETAS →</a></div>
-  </div>
-
-  <!-- Detail: Athletes -->
-  <div class="dp" id="hAtletas">
-    <div class="db">
-      <h3>🇲🇽 ISAAC DEL TORO — EL ORGULLO DE MÉXICO</h3>
-      <p>Subcampeón del Giro d'Italia 2025. Maglia Rosa durante 11 etapas consecutivas — algo que no hacía un ciclista tan joven desde Fausto Coppi en 1940. Campeón del UAE Tour y Tirreno-Adriático 2026. El futuro del ciclismo mundial habla español.</p>
-      <video autoplay muted loop playsinline style="width:100%;aspect-ratio:16/9;border-radius:8px;object-fit:cover"><source src="https://cdn.shopify.com/videos/c/vp/d7f522ee836d4fdb9c87676e33a12e7a/d7f522ee836d4fdb9c87676e33a12e7a.HD-720p-3.0Mbps-80190283.mp4" type="video/mp4"></video>
-      <p>Su Y1Rs Dark: negra total con detalles dorados, armada a medida para su estilo de escalador explosivo.</p>
-      <video autoplay muted loop playsinline style="width:100%;aspect-ratio:16/9;border-radius:8px;object-fit:cover;margin-top:.5rem"><source src="https://a.storyblok.com/f/263970/x/c246b3fca2/video-animation-reduced.mp4" type="video/mp4"></video>
-    </div>
-    <div class="db">
-      <div class="da"><h4>🇸🇮 TADEJ POGAČAR</h4><div class="tg">UAE Team Emirates — Líder</div><p>El mejor ciclista del mundo. 4 Grand Tours, 2x Campeón del Mundo, 85+ victorias. Domina Grand Tours y Monumentos como nadie en la historia moderna.</p></div>
-      <video autoplay muted loop playsinline style="width:100%;aspect-ratio:16/9;border-radius:8px;object-fit:cover;margin-top:1.2rem"><source src="https://cdn.shopify.com/videos/c/vp/f93edd3afc804bb89cd5ecfd7678d63b/f93edd3afc804bb89cd5ecfd7678d63b.HD-720p-3.0Mbps-80190289.mp4" type="video/mp4"></video>
-    </div>
-    <div class="db">
-      <div class="da"><h4>🇬🇧 ADAM YATES</h4><div class="tg">UAE Team Emirates</div><p>3ro Tour de France 2023. Ganador de múltiples carreras por etapas. Pieza clave del equipo.</p></div>
-      <div class="da"><h4>🇦🇺 JAY VINE</h4><div class="tg">UAE Team Emirates</div><p>Rey de la Montaña Vuelta 2024. Ganador Tour Down Under 2026 pese a fractura de muñeca en última etapa.</p></div>
-      <div class="da"><h4>🇪🇸 MARC SOLER</h4><div class="tg">UAE Team Emirates</div><p>Etapas en Tour y Vuelta. Campeón de España CRI. Domestique líder que convierte oportunidades en victorias.</p></div>
-    </div>
-    <div style="text-align:center;padding:2rem 0"><a href="#bikes" class="bg">COMPRAR BICICLETAS →</a></div>
+      <div class="ho"><h3>ATLETAS</h3><p>Los mejores del mundo</p></div>
+    </a>
   </div>
 </section>
-
-<!-- CART MODAL -->
-<div class="modal" id="cm">
-  <div class="mb">
-    <button class="mx" onclick="this.closest('.modal').classList.remove('show')">✕</button>
-    <div style="font-size:2.5rem;margin-bottom:1rem">🚴</div>
-    <h2 style="font-family:var(--font-h);font-size:1.5rem;letter-spacing:.05em;margin-bottom:.3rem">BICI AGREGADA</h2>
-    <p id="cn" style="color:var(--dim);font-size:.85rem;margin-bottom:1.8rem"></p>
-    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
-      <button class="bg" id="bchk">COMPRA TOTAL</button>
-      <button class="bo" onclick="document.getElementById('cm').classList.remove('show')">SEGUIR NAVEGANDO</button>
-    </div>
-  </div>
-</div>
-
-<!-- CHECKOUT MODAL -->
-<div class="modal" id="chk">
-  <div class="cbox">
-    <button class="mx" onclick="cclose()">✕</button>
-    <h2 style="font-family:var(--font-h);font-size:1.3rem;letter-spacing:.05em;margin-bottom:1rem">TU CARRITO</h2>
-    <div id="citems"></div>
-    <div class="ct"><span>Total</span><span class="price">Próximamente</span></div>
-    <div style="text-align:center;margin-top:1rem"><button class="bg" id="bbuy">COMPRAR AHORA</button></div>
-    <div class="pmsg" id="pmsg"><h3>Próximamente</h3><p>La función de compra estará disponible pronto.</p><button class="bo" style="margin-top:.7rem" onclick="cclose()">CERRAR</button></div>
-  </div>
-</div>
 
 <!-- WHATSAPP -->
 <div class="wf" id="wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.517-.802-6.235-2.147l-.436-.357-2.63.882.882-2.63-.357-.436A9.958 9.958 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg></div>
@@ -384,22 +228,20 @@ footer{padding:3rem 4% 1.5rem;background:var(--surface);border-top:1px solid rgb
   <div class="fi">
     <div class="fb"><h3>RICARDO'S SHOP</h3><p>Distribuidor autorizado Colnago en México. Artesanía italiana sobre dos ruedas.</p></div>
     <div class="fc"><h4>Navegación</h4><a href="#hero">Inicio</a><a href="#bikes">Bicicletas</a><a href="#history">Historia</a></div>
-    <div class="fc"><h4>Categorías</h4><a href="#bikes">Road</a><a href="#bikes">Gravel</a><a href="#bikes">Allroad</a><a href="#bikes">Time Trial</a></div>
+    <div class="fc"><h4>Categorías</h4><a href="bikes-road.html">Road</a><a href="bikes-gravel.html">Gravel</a><a href="bikes-track.html">T1Rs Track</a></div>
   </div>
   <div class="fbot">© 2026 Ricardo's Shop — Colnago Authorized Dealer — Made with ♠ in México</div>
 </footer>
 
-<!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollToPlugin.min.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 // Preloader
 window.addEventListener('load',()=>setTimeout(()=>{document.getElementById('pre').classList.add('off');heroAnim()},2400));
 
-// Nav
+// Nav scroll
 addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('s',scrollY>60));
 
 // Hero anim
@@ -412,115 +254,25 @@ function heroAnim(){
     .from('.hsc',{opacity:0,duration:.5},'-=.2');
 }
 
-// Load video on click (replaces thumbnail with iframe)
-function loadVid(el){
-  const thumb=el.querySelector('.vd-thumb');
-  const play=el.querySelector('.vd-play');
-  const iframe=el.querySelector('iframe');
-  if(thumb && !thumb.classList.contains('gone')){
-    const vid=el.dataset.vid||'';
-    if(vid) iframe.src='https://www.youtube-nocookie.com/embed/'+vid+'?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0&playsinline=1';
-    thumb.classList.add('gone');
-    if(play) play.classList.add('gone');
-  }
-}
+// Glow on all cards
+document.querySelectorAll('.gc,.hcard').forEach(c=>c.addEventListener('mousemove',e=>{
+  const r=c.getBoundingClientRect();
+  c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+  c.style.setProperty('--my',(e.clientY-r.top)+'px');
+}));
 
-// Glow effect for all cards
-function glowSetup(cards){
-  cards.forEach(c=>c.addEventListener('mousemove',e=>{
-    const r=c.getBoundingClientRect();
-    c.style.setProperty('--mx',(e.clientX-r.left)+'px');
-    c.style.setProperty('--my',(e.clientY-r.top)+'px');
-  }));
-}
-
-// BIKES CARDS
-const bc=document.querySelectorAll('#bcards .gc');
-let bclick={};
-glowSetup(bc);
-
-bc.forEach((c,i)=>{
-  c.addEventListener('click',()=>{
-    if(!bclick[i])bclick[i]=0;
-    bclick[i]++;
-    if(bclick[i]===1){
-      bc.forEach((x,j)=>{x.classList.remove('on');if(j!==i)bclick[j]=0;});
-      c.classList.add('on');
-      const vd=document.getElementById('bv');
-      const vid=document.getElementById('bvVid');
-      vid.src=c.dataset.v;
-      vid.load();vid.play();
-      document.getElementById('bvt').textContent=c.dataset.t;
-      document.getElementById('bvd').textContent=c.dataset.d;
-      gsap.from(vd,{y:25,opacity:0,duration:.5,ease:'power2.out'});
-    } else {
-      bclick[i]=0;
-      const p=document.getElementById('prods');
-      p.classList.add('vis');
-      gsap.to(window,{scrollTo:p,duration:.7,ease:'power2.inOut'});
-      gsap.from('.pr',{y:50,opacity:0,stagger:.15,duration:.6,ease:'power2.out',delay:.3});
-    }
-  });
-});
-
-// HISTORY CARDS
-const hc=document.querySelectorAll('#hcards .hcard');
-let hclick={};
-glowSetup(hc);
-
-hc.forEach((c,i)=>{
-  c.addEventListener('click',()=>{
-    if(!hclick[i])hclick[i]=0;
-    hclick[i]++;
-    if(hclick[i]===1){
-      hc.forEach((x,j)=>{x.classList.remove('on');if(j!==i)hclick[j]=0;});
-      c.classList.add('on');
-      const vd=document.getElementById('hv');
-      const vid=document.getElementById('hvVid');
-      vid.src=c.dataset.v;
-      vid.load();vid.play();
-      document.getElementById('hvt').textContent=c.dataset.t;
-      document.getElementById('hvd').textContent=c.dataset.d;
-      gsap.from(vd,{y:25,opacity:0,duration:.5,ease:'power2.out'});
-    } else {
-      hclick[i]=0;
-      document.querySelectorAll('.dp').forEach(d=>d.classList.remove('vis'));
-      const el=document.getElementById(c.dataset.p);
-      el.classList.add('vis');
-      gsap.to(window,{scrollTo:el,duration:.7,ease:'power2.inOut'});
-      gsap.from(el.querySelectorAll('.db'),{y:40,opacity:0,stagger:.12,duration:.6,ease:'power2.out',delay:.3});
-    }
+// Bike cards: hover changes video
+document.querySelectorAll('#bcards .gc').forEach(c=>{
+  c.addEventListener('mouseenter',()=>{
+    const vid=document.getElementById('bvVid');
+    vid.src=c.dataset.v;vid.load();vid.play();
   });
 });
 
 // Scroll animations
-ScrollTrigger.batch('#bcards .gc',{onEnter:b=>gsap.from(b,{y:40,opacity:0,stagger:.1,duration:.6,ease:'power2.out'}),start:'top 85%'});
-ScrollTrigger.batch('#hcards .hcard',{onEnter:b=>gsap.from(b,{y:40,opacity:0,stagger:.12,duration:.6,ease:'power2.out'}),start:'top 85%'});
-gsap.utils.toArray('.st').forEach(s=>gsap.from(s.children,{y:25,opacity:0,stagger:.08,duration:.6,ease:'power2.out',scrollTrigger:{trigger:s,start:'top 80%'}}));
-gsap.utils.toArray('.pr').forEach(r=>{
-  gsap.from(r.querySelector('.pm'),{x:r.classList.contains('rv')?50:-50,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:r,start:'top 75%'}});
-  gsap.from(r.querySelector('.pi').children,{y:25,opacity:0,stagger:.07,duration:.5,ease:'power2.out',scrollTrigger:{trigger:r,start:'top 70%'}});
-});
-
-// Cart
-const cart=[];
-document.querySelectorAll('.cart').forEach(b=>b.addEventListener('click',()=>{
-  cart.push({name:b.dataset.n});
-  document.getElementById('cn').textContent=b.dataset.n;
-  document.getElementById('cm').classList.add('show');
-  gsap.from('.mb',{scale:.92,opacity:0,duration:.3,ease:'back.out(1.7)'});
-}));
-document.getElementById('bchk').addEventListener('click',()=>{
-  document.getElementById('cm').classList.remove('show');
-  document.getElementById('citems').innerHTML=cart.map(i=>'<div class="ci"><div><h4>'+i.name+'</h4><p>Precio próximamente</p></div></div>').join('');
-  document.getElementById('chk').classList.add('show');
-  gsap.from('.cbox',{y:25,opacity:0,duration:.4,ease:'power2.out'});
-});
-document.getElementById('bbuy').addEventListener('click',()=>{
-  document.getElementById('pmsg').classList.add('show');
-  gsap.from('#pmsg',{y:12,opacity:0,duration:.3,ease:'power2.out'});
-});
-function cclose(){document.getElementById('chk').classList.remove('show');document.getElementById('pmsg').classList.remove('show')}
+ScrollTrigger.batch('.gc',{onEnter:b=>gsap.from(b,{y:40,opacity:0,stagger:.1,duration:.6,ease:'power2.out'}),start:'top 85%'});
+ScrollTrigger.batch('.hcard',{onEnter:b=>gsap.from(b,{y:40,opacity:0,stagger:.12,duration:.6,ease:'power2.out'}),start:'top 85%'});
+gsap.from('.moti-text',{y:30,opacity:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:'#moti',start:'top 80%'}});
 
 // WhatsApp
 let wo=false;
